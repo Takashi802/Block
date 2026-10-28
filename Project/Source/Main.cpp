@@ -6,6 +6,62 @@
 //#include "Sound/SoundManager.h"
 #include "Map/MapManager.h"
 #include "Player/Player.h"
+#include "Input/Input.h"
+
+
+void GameInit()
+{
+	// 入力初期化
+	InitInput();
+
+	// プレイヤー初期化
+	InitPlayer();
+}
+
+
+
+void GameStep()
+{
+
+}
+
+
+
+// 更新関数
+// ゲームが動いている間ずっと呼ばれる
+void GameUpdate()
+{
+	// 入力更新
+	UpdateInput();
+
+	// プレイヤー更新
+	UpdatePlayer();
+
+}
+
+// 描画関数
+// 画面に描画する
+void GameDraw()
+{
+	// プレイヤー描画
+	DrawPlayer();
+
+	// 入力描画
+	DrawInput();
+}
+
+// 終了関数
+// ゲーム終了時に1回だけ呼ばれる
+void GameFin()
+{
+	// 入力終了
+	FinInput();
+
+	// プレイヤー終了
+	FinPlayer();
+}
+
+
 // プログラムは WinMain から始まります
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd)
 {
@@ -20,13 +76,13 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 		return -1;			// エラーが起きたら直ちに終了
 	}
 
-	
+
 
 	InitMap();
 
 	LoadMap();
 
-	
+
 
 	// ウィンドウサイズ設定
 	//SetWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -38,7 +94,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 	SetDrawScreen(DX_SCREEN_BACK);
 
 	// 入力システムを初期化
-	//InitInput();
+	InitInput();
 
 	// UIはどこでも使うのでゲーム起動時に初期化、ロード
 	//InitUIImage();
@@ -54,31 +110,35 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 	// FPS制御を初期化
 	//InitFPS();
 
+	InitPlayer();
+	LoadPlayer();
+	StartPlayer();
+
 	// ゲームのメインループ
 	while (ProcessMessage() >= 0)
 	{
 		// ループ処理前に1ミリ秒止めると処理が安定する
-		
+
 
 		// 画面をクリア
 		ClearDrawScreen();
 
 		// 入力を更新
-		//UpdateInput();
+		UpdateInput();
 
 		// シーン管理の更新
 		//SceneManagerUpdate();
 
 		// 入力システムの描画
-		//DrawInput();
+		DrawInput();
 
-		InitPlayer();
-
-		LoadPlayer();
+		StepPlayer();
+		UpdatePlayer();
 
 		StartMap();
 
 		DrawMap();
+		DrawPlayer();
 		// エスケープキーで終了
 		if (CheckHitKey(KEY_INPUT_ESCAPE)) break;
 
@@ -96,7 +156,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 	}
 
 	// 入力システムの終了
-	//FinInput();
+	FinInput();
 
 	// UI終了
 	//FinUIImage();

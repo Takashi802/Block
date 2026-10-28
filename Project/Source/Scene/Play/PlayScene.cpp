@@ -19,6 +19,8 @@ void InitPlayScene()
 
 	// カメラ初期化
 	InitCamera();
+
+
 }
 
 void LoadPlayScene()
@@ -60,11 +62,12 @@ void UpdatePlayScene()
 
 void DrawPlayScene()
 {
+	// プレイヤー描画
+	DrawPlayer();
+
 	// マップ描画
 	DrawMap();
 
-	// プレイヤー描画
-	DrawPlayer();
 
 	// カメラ描画
 	DrawCamera();

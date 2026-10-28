@@ -21,12 +21,12 @@ void UpdateInput()
 	g_InputState = 0;
 
 	// 入力状態をビットフラグで設定
-	
-	if (CheckHitKey(KEY_INPUT_LEFT))
+
+	if (CheckHitKey(KEY_INPUT_A))
 	{
 		g_InputState |= KEY_A;
 	}
-	if (CheckHitKey(KEY_INPUT_RIGHT))
+	if (CheckHitKey(KEY_INPUT_D))
 	{
 		g_InputState |= KEY_D;
 	}
