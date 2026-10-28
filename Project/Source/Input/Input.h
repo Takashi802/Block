@@ -1,0 +1,24 @@
+#pragma once
+
+// 入力ボタン定義
+enum InputKey
+{
+	KEY_A= (1 << 0),	// 0x0000 0001
+	KEY_D = (1 << 1),	// 0x0000 0010
+	KEY_W = (1 << 2), // 0x0000 0100
+	KEY_S = (1 << 3), // 0x0000 1000
+	KEY_SPACE = (1 << 4), // 0x0001 0000
+	KEY_Z = (1 << 5), // 0x0001 0000
+};
+
+// 関数のプロトタイプ宣言 
+void InitInput();
+void UpdateInput();
+void DrawInput();
+void FinInput();
+
+bool IsInputKey(InputKey key);		// キー入力判定
+bool IsTriggerKey(InputKey key);	// キー押した瞬間判定
+
+
+
