@@ -7,6 +7,7 @@
 #include "Map/MapManager.h"
 #include "Player/Player.h"
 #include "Input/Input.h"
+#include "Camera/Camera.h"
 
 
 void GameInit()
@@ -128,6 +129,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
 		// シーン管理の更新
 		//SceneManagerUpdate();
+
+		StepCamera();
 
 		// 入力システムの描画
 		DrawInput();

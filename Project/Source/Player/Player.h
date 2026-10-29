@@ -1,5 +1,8 @@
 #pragma once
 #include "../Collision/CollisionParameter.h"
+#include "../Map/MapParameter.h"
+#include "../Collision/Collision.h"
+
 
 // プレイヤー設定関連
 #define PLAYER_WIDTH (25.0f)
@@ -22,9 +25,12 @@ struct PlayerData
 	int handle;		//画像ハンドル
 	Body body;		// 当たり判定ボディ
 	bool isTurn;								// 左を向いているか
+	BoxCollision boxCollision;				//矩形の当たり判定
 	bool isAir;									// 空中にいるか
 	VECTOR pos;
 	VECTOR move;
+	
+
 };
 
 void InitPlayer();
@@ -35,4 +41,8 @@ void UpdatePlayer();
 void DrawPlayer();
 void FinPlayer();
 
+
 PlayerData GetPlayer();
+
+void PlayerHitNormalBlockX(MapChipData mapChipData);
+void PlayerHitNormalBlockY(MapChipData mapChipData);

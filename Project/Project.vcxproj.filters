@@ -99,6 +99,9 @@
     <ClCompile Include="Source\BackGround\BackGround.cpp">
       <Filter>Source\BackGround</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Collision\Collision.cpp">
+      <Filter>Source\Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Player\Player.h">
@@ -154,6 +157,9 @@
     </ClInclude>
     <ClInclude Include="Source\BackGround\BackGround.h">
       <Filter>Source\BackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collision\Collision.h">
+      <Filter>Source\Collision</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
