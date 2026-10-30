@@ -123,6 +123,6 @@ void CheckCollision()
 	// ここに当たり判定の処理を書く
 
 	// プレイヤーとマップの当たり判定
-	ChceckMapPlayerCollision();
+	CheckMapPlayerCollision();
 }
 

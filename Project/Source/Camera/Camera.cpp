@@ -18,13 +18,9 @@ void StepCamera()
 {
 	PlayerData player = GetPlayer();
 
-	g_CameraData.pos.x = player.pos.x - 200.0f;
-	g_CameraData.pos.y = player.pos.y - 300.0f;
+	g_CameraData.pos.x = player.body.pos.x - 150.0f;
+	
 
-	if (IsInputKey(KEY_D))
-	{
-		g_CameraData.pos.x += DEBUG_CAMERA_SPEED;
-	}
 }
 
 void DrawCamera()

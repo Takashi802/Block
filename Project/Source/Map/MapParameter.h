@@ -19,6 +19,8 @@ struct BlockData
 {
 	bool active;
 	int handle;
+	float width;
+	float height;
 	MapChipType type;
 	VECTOR pos;
 };

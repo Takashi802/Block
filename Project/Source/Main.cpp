@@ -10,57 +10,6 @@
 #include "Camera/Camera.h"
 
 
-void GameInit()
-{
-	// 入力初期化
-	InitInput();
-
-	// プレイヤー初期化
-	InitPlayer();
-}
-
-
-
-void GameStep()
-{
-
-}
-
-
-
-// 更新関数
-// ゲームが動いている間ずっと呼ばれる
-void GameUpdate()
-{
-	// 入力更新
-	UpdateInput();
-
-	// プレイヤー更新
-	UpdatePlayer();
-
-}
-
-// 描画関数
-// 画面に描画する
-void GameDraw()
-{
-	// プレイヤー描画
-	DrawPlayer();
-
-	// 入力描画
-	DrawInput();
-}
-
-// 終了関数
-// ゲーム終了時に1回だけ呼ばれる
-void GameFin()
-{
-	// 入力終了
-	FinInput();
-
-	// プレイヤー終了
-	FinPlayer();
-}
 
 
 // プログラムは WinMain から始まります
@@ -83,7 +32,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
 	LoadMap();
 
+	StartMap();
 
+	
 
 	// ウィンドウサイズ設定
 	//SetWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -138,9 +89,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 		StepPlayer();
 		UpdatePlayer();
 
-		StartMap();
-
 		DrawMap();
+
+		
 		DrawPlayer();
 		// エスケープキーで終了
 		if (CheckHitKey(KEY_INPUT_ESCAPE)) break;

@@ -3,14 +3,16 @@
 #include "../Camera/Camera.h"
 #include "../Map/MapParameter.h"
 #include "../Collision/Collision.h"
+#include "../Map/MapManager.h"
 
-//プレイヤー設定関連
+//プレイヤー設定関連// プレイヤー設定関連
+#define PLAYER_WIDTH (25.0f)
+#define PLAYER_HEIGHT (25.0f)
+#define PLAYER_RADIUS	(20.0f)
 #define PLAYER_DEFAULT_POS_X (100.0f)
 #define PLAYER_DEFAULT_POS_Y (300.0f)
-#define PLAYER_MOVE_SPEED (0.01f)
+#define PLAYER_MOVE_SPEED (1.0f)
 
-// マップ衝突判定用のプレイヤーサイズ補正
-#define PLAYER_MAP_COLLISION_OFFSET (0.1f)
 
 // 矩形判定の位置補正
 #define PLAYER_BOX_COLLISION_OFFSET_X (24)
@@ -24,25 +26,26 @@
 //ジャンプ力
 #define PLAYER_JUMP_POWER (1.0f)
 //重力
-#define PLAYER_GRAVITY (0.01f)
+#define PLAYER_GRAVITY (0.1f)
 
 
 PlayerData g_PlayerData = { 0 };
 PlayerData g_PrevPlayerData = { 0 };
 
 
-void CalcBoxCollision(PlayerData player, float& x, float& y, float& w, float& h);
 
 
 void InitPlayer()
 {
-	g_PlayerData.pos.x = PLAYER_DEFAULT_POS_X;
-	g_PlayerData.pos.y = PLAYER_DEFAULT_POS_Y;
-	g_PlayerData.move.x = 0.0f;
-	g_PlayerData.move.y = 0.0f;
+	g_PlayerData.body.pos.x = PLAYER_DEFAULT_POS_X;
+	g_PlayerData.body.pos.y = PLAYER_DEFAULT_POS_Y;
+	g_PlayerData.body.move.x = 0.0f;
+	g_PlayerData.body.move.y = 0.0f;
+	g_PlayerData.body.width = 0.0f;
+	g_PlayerData.body.height = 0.0f;
 
-	// 構造体はmemsetで0初期化できる
-	memset(&g_PlayerData.boxCollision, 0, sizeof(g_PlayerData.boxCollision));
+
+	
 }
 
 void LoadPlayer()
@@ -57,11 +60,11 @@ void StartPlayer()
 	g_PlayerData.active = true;
 
 
-	// 矩形判定設定
-	g_PlayerData.boxCollision.posX = PLAYER_BOX_COLLISION_OFFSET_X;
-	g_PlayerData.boxCollision.posY = PLAYER_BOX_COLLISION_OFFSET_Y;
-	g_PlayerData.boxCollision.width = PLAYER_BOX_COLLISION_WIDTH;
-	g_PlayerData.boxCollision.height = PLAYER_BOX_COLLISION_HEIGHT;
+	//// 矩形判定設定
+	//g_PlayerData.boxCollision.posX = PLAYER_BOX_COLLISION_OFFSET_X;
+	//g_PlayerData.boxCollision.posY = PLAYER_BOX_COLLISION_OFFSET_Y;
+	//g_PlayerData.boxCollision.width = PLAYER_BOX_COLLISION_WIDTH;
+	//g_PlayerData.boxCollision.height = PLAYER_BOX_COLLISION_HEIGHT;
 }
 
 void StepPlayer()
@@ -73,25 +76,25 @@ void StepPlayer()
 	}
 
 	// X移動量は毎回リセットする
-	g_PlayerData.move.x = 0.0f;
+	g_PlayerData.body.move.x = 0.0f;
 
 	// Y移動量に重力を反映
-	g_PlayerData.move.y += PLAYER_GRAVITY;
+	g_PlayerData.body.move.y += PLAYER_GRAVITY;
 
 	// 左入力
 	if (IsInputKey(KEY_A))
 	{
-		g_PlayerData.move.x = -PLAYER_MOVE_SPEED;
+		g_PlayerData.body.move.x = -PLAYER_MOVE_SPEED;
 	}
 	else if (IsInputKey(KEY_D))
 	{
-		g_PlayerData.move.x = PLAYER_MOVE_SPEED;
+		g_PlayerData.body.move.x = PLAYER_MOVE_SPEED;
 	}
 
 	// SPACE入力
 	if (IsTriggerKey(KEY_SPACE))
 	{
-		g_PlayerData.move.y = -PLAYER_JUMP_POWER;
+		g_PlayerData.body.move.y = -PLAYER_JUMP_POWER;
 	}
 }
 
@@ -100,27 +103,36 @@ void UpdatePlayer()
 	// 死んでいたら処理しない
 	if (!g_PlayerData.active) return;
 
-	// 上昇しているもしくは落ちている場合は空中フラグを立てる
-	if (g_PlayerData.move.y < 0.0f || g_PlayerData.move.y > PLAYER_GRAVITY)
-	{
-		g_PlayerData.isAir = true;
-	}
+	//// 上昇しているもしくは落ちている場合は空中フラグを立てる
+	//if (g_PlayerData.move.y < 0.0f || g_PlayerData.move.y > PLAYER_GRAVITY)
+	//{
+	//	g_PlayerData.isAir = true;
+	//}
 
 	// 移動処理
-	g_PlayerData.pos.x += g_PlayerData.move.x;
-	g_PlayerData.pos.y += g_PlayerData.move.y;
+	g_PlayerData.body.pos.x += g_PlayerData.body.move.x;
+	g_PlayerData.body.pos.y += g_PlayerData.body.move.y;
+
+	// 当たり判定付きで移動
+	MoveWithMapCollision(&g_PlayerData.body);
 
 }
 
 void DrawPlayer()
 {
-	// 死んでいたら処理しない
+	
+	//死んでたら処理しない
 	if (!g_PlayerData.active) return;
-	DrawGraph((int)g_PlayerData.pos.x, (int)g_PlayerData.pos.y, g_PlayerData.handle, TRUE);
 
-
-	// カメラ取得
+	//カメラ取得
 	CameraData camera = GetCamera();
+
+	DrawGraph(
+		(int)(g_PlayerData.body.pos.x - camera.pos.x),
+		(int)(g_PlayerData.body.pos.y - camera.pos.y),
+		g_PlayerData.handle,
+		TRUE
+	);
 
 }
 
@@ -135,85 +147,4 @@ PlayerData GetPlayer()
 {
 	return g_PlayerData;
 }
-void PlayerHitNormalBlockX(MapChipData mapChipData)
-{
-	PlayerData player = g_PlayerData;
-	BlockData* block = mapChipData.data;
-	const float POS_OFFSET = PLAYER_MAP_COLLISION_OFFSET;
-	const float SIZE_OFFSET = PLAYER_MAP_COLLISION_OFFSET * 2;
 
-	// ターンフラグは前回のものにしないと反転した分ずれる
-	player.isTurn = g_PrevPlayerData.isTurn;
-
-	// Y移動を戻し、横に当たっているかチェック
-	player.pos.x = g_PlayerData.pos.x;
-	player.pos.y = g_PrevPlayerData.pos.y;
-
-	// 当たり判定のボックス計算
-	float x, y, w, h;
-	CalcBoxCollision(player, x, y, w, h);
-
-	if (CheckSquareSquare(x + POS_OFFSET, y + POS_OFFSET, w - SIZE_OFFSET, h - SIZE_OFFSET,
-		block->pos.x, block->pos.y, MAP_CHIP_WIDTH, MAP_CHIP_HEIGHT))
-	{
-		// 左からあたったか
-		if (player.move.x > 0.0f)
-		{
-			// 左に押し出す
-			g_PlayerData.pos.x -= (x + w) - block->pos.x;
-		}
-		// 右からあたったか
-		else if (player.move.x < 0.0f)
-		{
-			// 右に押し出す
-			g_PlayerData.pos.x += (block->pos.x + MAP_CHIP_WIDTH) - x;
-		}
-	}
-}
-
-void PlayerHitNormalBlockY(MapChipData mapChipData)
-{
-	PlayerData player = g_PlayerData;
-	BlockData* block = mapChipData.data;
-	const float POS_OFFSET = PLAYER_MAP_COLLISION_OFFSET;
-	const float SIZE_OFFSET = PLAYER_MAP_COLLISION_OFFSET * 2;
-
-	// ターンフラグは前回のものにしないと反転した分ずれる
-	player.isTurn = g_PrevPlayerData.isTurn;
-
-	// 当たり判定のボックス計算
-	float x, y, w, h;
-	CalcBoxCollision(player, x, y, w, h);
-
-	// まだ当たっているなら縦に当たっている
-	if (CheckSquareSquare(x + POS_OFFSET, y + POS_OFFSET, w - SIZE_OFFSET, h - SIZE_OFFSET,
-		block->pos.x, block->pos.y, MAP_CHIP_WIDTH, MAP_CHIP_HEIGHT))
-	{
-		// Y移動量を0にする
-		g_PlayerData.move.y = 0.0f;
-
-		// 上からあたったか
-		if (player.move.y > 0.0f)
-		{
-			// 上に押し出す
-			g_PlayerData.pos.y -= (y + h) - block->pos.y;
-			g_PlayerData.isAir = false;
-		}
-		// 下からあたったか
-		else if (player.move.y < 0.0f)
-		{
-			// 下に押し出す
-			g_PlayerData.pos.y += (block->pos.y + MAP_CHIP_WIDTH) - y;
-		}
-	}
-}
-
-void CalcBoxCollision(PlayerData player, float& x, float& y, float& w, float& h)
-{
-	x = player.isTurn ?
-		player.pos.x + PLAYER_WIDTH - player.boxCollision.posX - player.boxCollision.width :
-		player.pos.x + player.boxCollision.posX;
-	y = player.pos.y + player.boxCollision.posY;
-	w = player.boxCollision.width;
-	h = player.boxCollision.height;
-}
