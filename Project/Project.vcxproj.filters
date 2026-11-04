@@ -49,6 +49,9 @@
     <Filter Include="Source\BackGround">
       <UniqueIdentifier>{65afcbc6-9657-491d-9867-10d85bbbd8cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Cube">
+      <UniqueIdentifier>{218b4374-5961-4d6a-a539-5dfc25be1039}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">
@@ -101,6 +104,9 @@
     </ClCompile>
     <ClCompile Include="Source\Collision\Collision.cpp">
       <Filter>Source\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Block\Cube.cpp">
+      <Filter>Source\Cube</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="Source\Collision\Collision.h">
       <Filter>Source\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Block\Cube.h">
+      <Filter>Source\Cube</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

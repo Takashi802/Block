@@ -1,5 +1,6 @@
 #include "Block.h"
 #include "../Camera/Camera.h"
+#include "MapChip.h"
 
 BlockData g_Blocks[BLOCK_MAX] = { 0 };
 int g_BlockHandle[BLOCK_TYPE_MAX] = { 0 };
