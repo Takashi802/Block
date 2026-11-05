@@ -4,8 +4,6 @@
 #define CUBE_WIDTH (25.0f)
 #define CUBE_HEIGHT (25.0f)
 #define CUBE_RADIUS	(20.0f)
-#define CUBE_DEFAULT_POS_X (500.0f)
-#define CUBE_DEFAULT_POS_Y (430.0f)
 
 // ïœêî
 
@@ -15,17 +13,15 @@ void InitCube()
 
 	for (int i = 0; i < CUBE_NUM; i++)
 	{
+		
 
-
-		g_CubeData.body.pos.x = CUBE_DEFAULT_POS_X;
-		g_CubeData.body.pos.y = CUBE_DEFAULT_POS_Y;
-
+	
 	}
 }
 
 void LoadCube()
 {
-	g_CubeData.handle = LoadGraph("Data/Cube/Blue.png");
+	
 }
 
 

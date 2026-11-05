@@ -2,7 +2,7 @@
 #include "DxLib.h"
 
 #define BLOCK_MAX 1024
-#define MAP_CHIP_X_NUM (60)
+#define MAP_CHIP_X_NUM (82)
 #define MAP_CHIP_Y_NUM (20)
 #define MAP_CHIP_WIDTH (24.0f)
 #define MAP_CHIP_HEIGHT (24.0f)
@@ -12,6 +12,13 @@ enum MapChipType
 	MAP_CHIP_NONE,		
 	BLOCK1,				//‚±‚Ì”š‚ÆƒGƒNƒZƒ‹‚Ì”š‚ª“¯‚¶
 	BLOCK2,
+	BLOCK3,
+	BLOCK4,
+	BLOCK5,
+	BLOCK6,
+	BLOCK7,
+	BLOCK8,
+	BLOCK9,
 	BLOCK_TYPE_MAX,
 };
 

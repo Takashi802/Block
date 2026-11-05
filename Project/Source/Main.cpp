@@ -9,7 +9,7 @@
 #include "Input/Input.h"
 #include "Camera/Camera.h"
 #include "Enemy/Enemy.h"
-#include "Block/Cube.h"
+#include "Cube/Cube.h"
 
 
 
@@ -78,8 +78,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
 	StartPlayer();
 
-	UpdateCube();
-
 	// ゲームのメインループ
 	while (ProcessMessage() >= 0)
 	{
@@ -110,7 +108,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
 		UpdateEnemy();
 
-		
+		UpdateCube();
 
 		DrawMap();
 

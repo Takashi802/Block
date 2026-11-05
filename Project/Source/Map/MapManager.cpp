@@ -4,6 +4,7 @@
 #include "Block.h"
 #include "../Player/Player.h"
 #include "../Collision/Collision.h"
+#include "../Cube/Cube.h"
 
 
 // キャラクターの周囲何マスまでチェックするか
@@ -19,6 +20,7 @@ void LoadMap()
 	LoadMapChipData();
 	LoadBlock();
 
+
 }
 
 void StartMap()
@@ -30,6 +32,7 @@ void DrawMap()
 {
 	// ブロック描画
 	DrawBlock();
+
 }
 
 void FinMap()

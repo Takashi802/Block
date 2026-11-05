@@ -20,9 +20,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\BackGround\BackGround.cpp" />
-    <ClCompile Include="Source\Block\Cube.cpp" />
     <ClCompile Include="Source\Camera\Camera.cpp" />
     <ClCompile Include="Source\Collision\Collision.cpp" />
+    <ClCompile Include="Source\Cube\Cube.cpp" />
     <ClCompile Include="Source\Effect\Effect.cpp" />
     <ClCompile Include="Source\Enemy\Enemy.cpp" />
     <ClCompile Include="Source\Input\Input.cpp" />
@@ -40,10 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\BackGround\BackGround.h" />
-    <ClInclude Include="Source\Block\Cube.h" />
     <ClInclude Include="Source\Camera\Camera.h" />
     <ClInclude Include="Source\Collision\Collision.h" />
     <ClInclude Include="Source\Collision\CollisionParameter.h" />
+    <ClInclude Include="Source\Cube\Cube.h" />
     <ClInclude Include="Source\Effect\Effect.h" />
     <ClInclude Include="Source\Enemy\Enemy.h" />
     <ClInclude Include="Source\GameSetting\GameSetting.h" />

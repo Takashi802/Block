@@ -105,7 +105,7 @@
     <ClCompile Include="Source\Collision\Collision.cpp">
       <Filter>Source\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Block\Cube.cpp">
+    <ClCompile Include="Source\Cube\Cube.cpp">
       <Filter>Source\Cube</Filter>
     </ClCompile>
   </ItemGroup>
@@ -167,7 +167,7 @@
     <ClInclude Include="Source\Collision\Collision.h">
       <Filter>Source\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Block\Cube.h">
+    <ClInclude Include="Source\Cube\Cube.h">
       <Filter>Source\Cube</Filter>
     </ClInclude>
   </ItemGroup>
