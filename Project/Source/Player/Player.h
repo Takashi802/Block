@@ -9,6 +9,7 @@ struct PlayerData
 	bool active;	//生存フラグ
 	int handle;		//画像ハンドル
 	Body body;		// 当たり判定ボディ
+	BoxCollision boxCollision;
 };
 
 void InitPlayer();

@@ -1,5 +1,6 @@
 #include "DxLib.h"
 #include "Cube.h"
+#include "../Map/MapParameter.h"
 
 #define CUBE_WIDTH (25.0f)
 #define CUBE_HEIGHT (25.0f)
@@ -8,6 +9,9 @@
 // ïœêî
 
 CubeData g_CubeData = { 0 };
+int g_CubeHandle[CUBE_TYPE_MAX] = { 0 };
+
+
 void InitCube()
 {
 
@@ -21,7 +25,13 @@ void InitCube()
 
 void LoadCube()
 {
-	
+	g_CubeHandle[CUBE1] = LoadGraph("Data/Map/Block3.png");
+	g_CubeHandle[CUBE2] = LoadGraph("Data/Map/Block4.png");
+	g_CubeHandle[CUBE3] = LoadGraph("Data/Map/Block5.png");
+	g_CubeHandle[CUBE4] = LoadGraph("Data/Map/Block6.png");
+	g_CubeHandle[CUBE5] = LoadGraph("Data/Map/Block7.png");
+	g_CubeHandle[CUBE6] = LoadGraph("Data/Map/Block8.png");
+	g_CubeHandle[CUBE7] = LoadGraph("Data/Map/Block9.png");
 }
 
 

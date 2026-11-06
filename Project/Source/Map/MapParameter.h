@@ -12,14 +12,21 @@ enum MapChipType
 	MAP_CHIP_NONE,		
 	BLOCK1,				//‚±‚Ì”Žš‚ÆƒGƒNƒZƒ‹‚Ì”Žš‚ª“¯‚¶
 	BLOCK2,
-	BLOCK3,
-	BLOCK4,
-	BLOCK5,
-	BLOCK6,
-	BLOCK7,
-	BLOCK8,
-	BLOCK9,
+	
 	BLOCK_TYPE_MAX,
+};
+
+enum CubeMapType
+{
+	CUBE_MAP_NONE,
+	CUBE1,
+	CUBE2,
+	CUBE3,
+	CUBE4,
+	CUBE5,
+	CUBE6,
+	CUBE7,
+	CUBE_TYPE_MAX,
 };
 
 struct BlockData

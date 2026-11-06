@@ -7,7 +7,7 @@
 
 //プレイヤー設定関連// プレイヤー設定関連
 #define PLAYER_WIDTH (25.0f)
-#define PLAYER_HEIGHT (25.0f)
+#define PLAYER_HEIGHT (40.0f)
 #define PLAYER_RADIUS	(20.0f)
 #define PLAYER_DEFAULT_POS_X (100.0f)
 #define PLAYER_DEFAULT_POS_Y (300.0f)
@@ -18,8 +18,8 @@
 #define PLAYER_BOX_COLLISION_OFFSET_X (24)
 #define PLAYER_BOX_COLLISION_OFFSET_Y (20)
 // 矩形判定のサイズ
-#define PLAYER_BOX_COLLISION_WIDTH (20)
-#define PLAYER_BOX_COLLISION_HEIGHT (44)
+#define PLAYER_BOX_COLLISION_WIDTH (50)
+#define PLAYER_BOX_COLLISION_HEIGHT (50)
 
 
 
@@ -41,8 +41,8 @@ void InitPlayer()
 	g_PlayerData.body.pos.y = PLAYER_DEFAULT_POS_Y;
 	g_PlayerData.body.move.x = 0.0f;
 	g_PlayerData.body.move.y = 0.0f;
-	g_PlayerData.body.width = 0.0f;
-	g_PlayerData.body.height = 0.0f;
+	g_PlayerData.body.width = PLAYER_WIDTH;
+	g_PlayerData.body.height = PLAYER_HEIGHT;
 
 
 	
@@ -61,10 +61,10 @@ void StartPlayer()
 
 
 	//// 矩形判定設定
-	//g_PlayerData.boxCollision.posX = PLAYER_BOX_COLLISION_OFFSET_X;
-	//g_PlayerData.boxCollision.posY = PLAYER_BOX_COLLISION_OFFSET_Y;
-	//g_PlayerData.boxCollision.width = PLAYER_BOX_COLLISION_WIDTH;
-	//g_PlayerData.boxCollision.height = PLAYER_BOX_COLLISION_HEIGHT;
+	g_PlayerData.boxCollision.posX = PLAYER_BOX_COLLISION_OFFSET_X;
+	g_PlayerData.boxCollision.posY = PLAYER_BOX_COLLISION_OFFSET_Y;
+	g_PlayerData.boxCollision.width = PLAYER_BOX_COLLISION_WIDTH;
+	g_PlayerData.boxCollision.height = PLAYER_BOX_COLLISION_HEIGHT;
 }
 
 void StepPlayer()

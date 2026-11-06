@@ -4,6 +4,7 @@
 //#include "UI/UIImage.h"
 //#include "UI/UIText.h"
 //#include "Sound/SoundManager.h"
+#include "GameSetting/GameSetting.h"
 #include "Map/MapManager.h"
 #include "Player/Player.h"
 #include "Input/Input.h"

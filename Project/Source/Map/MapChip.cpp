@@ -44,6 +44,37 @@ void CreateMap()
 	}
 }
 
+void LoadCubeData()
+{
+
+	FILE* fp;
+	if (fopen_s(&fp, "Data/Map/Map.bin", "rb") != 0) return;
+
+	for (int i = 0; i < MAP_CHIP_Y_NUM; i++)
+	{
+		for (int j = 0; j < MAP_CHIP_X_NUM; j++)
+		{
+			//マップ情報は1バイトずつ保存されるので、
+			//fgetc関数でちょうど1バイト取得できる
+			int map = fgetc(fp);
+			g_MapChip[i][j].mapChip = map;
+		}
+	}
+
+
+}
+
+
+
+//void CubeMap()
+//{
+//	for(int )
+//
+//}
+
+
+
+
 MapChipData GetMapChipData(int x, int y)
 {
 	return g_MapChip[y][x];

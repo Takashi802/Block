@@ -21,13 +21,7 @@ void LoadBlock()
 {
 	g_BlockHandle[BLOCK1] = LoadGraph("Data/Map/Block1.png");
 	g_BlockHandle[BLOCK2] = LoadGraph("Data/Map/Block2.png");
-	g_BlockHandle[BLOCK3] = LoadGraph("Data/Map/Block3.png");
-	g_BlockHandle[BLOCK4] = LoadGraph("Data/Map/Block4.png");
-	g_BlockHandle[BLOCK5] = LoadGraph("Data/Map/Block5.png");
-	g_BlockHandle[BLOCK6] = LoadGraph("Data/Map/Block6.png");
-	g_BlockHandle[BLOCK7] = LoadGraph("Data/Map/Block7.png");
-	g_BlockHandle[BLOCK8] = LoadGraph("Data/Map/Block8.png");
-	g_BlockHandle[BLOCK9] = LoadGraph("Data/Map/Block9.png");
+	
 	
 }
 
