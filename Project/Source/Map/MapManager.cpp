@@ -18,6 +18,7 @@ void InitMap()
 void LoadMap()
 {
 	LoadMapChipData();
+	LoadCubeData();
 	LoadBlock();
 	LoadCube();
 
@@ -26,6 +27,7 @@ void LoadMap()
 void StartMap()
 {
 	CreateMap();
+	CubeMap();
 }
 
 void DrawMap()

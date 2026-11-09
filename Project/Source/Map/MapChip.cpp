@@ -3,8 +3,10 @@
 #include "MapParameter.h"
 #include "Block.h"
 #include "../GameSetting/GameSetting.h"
+#include "../Cube/Cube.h"
 
 MapChipData g_MapChip[MAP_CHIP_Y_NUM][MAP_CHIP_X_NUM] = { 0 };
+
 
 
 void LoadMapChipData()
@@ -66,11 +68,26 @@ void LoadCubeData()
 
 
 
-//void CubeMap()
-//{
-//	for(int )
-//
-//}
+void CubeMap()
+{
+	for (int i = 0; i < MAP_CHIP_Y_NUM; i++)
+	{
+		for (int j = 0; j < MAP_CHIP_X_NUM; j++)
+		{
+			//マップチップに合わせてブロック生成
+			CubeMapType type = (CubeMapType)g_MapChip[i][j].mapChip;
+
+			//MAP_CHIP_NONEの場合は何もしない
+			if (type == MAP_CHIP_NONE)continue;
+
+			//インデックスから座標を計算
+			VECTOR pos = VGet(j * MAP_CHIP_WIDTH, i * MAP_CHIP_HEIGHT, 0.0f);
+			//生成したブロックはMapChipDataで参照しておく
+			g_MapChip[i][j].data = CreateCube(type, pos);
+		}
+	}
+
+}
 
 
 

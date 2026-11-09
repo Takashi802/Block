@@ -1,12 +1,12 @@
 #include "DxLib.h"
 #include "Cube.h"
 #include "../Map/MapParameter.h"
+#include "../Camera/Camera.h"
 
-#define CUBE_WIDTH (25.0f)
-#define CUBE_HEIGHT (25.0f)
-#define CUBE_RADIUS	(20.0f)
 
 // 変数
+
+CubeData g_Cubes[CUBE_MAX] = { 0 };
 
 CubeData g_CubeData = { 0 };
 int g_CubeHandle[CUBE_TYPE_MAX] = { 0 };
@@ -14,24 +14,25 @@ int g_CubeHandle[CUBE_TYPE_MAX] = { 0 };
 
 void InitCube()
 {
-
-	for (int i = 0; i < CUBE_NUM; i++)
+	CubeData* cube = g_Cubes;
+	for (int i = 0; i < CUBE_MAX; i++)
 	{
 		
-
-	
+		cube->active = false;
+		cube->pos = VGet(0.0f, 0.0f, 0.0f);
+		cube->type = CUBE_MAP_NONE;
 	}
 }
 
 void LoadCube()
 {
-	g_CubeHandle[CUBE1] = LoadGraph("Data/Map/Block3.png");
-	g_CubeHandle[CUBE2] = LoadGraph("Data/Map/Block4.png");
-	g_CubeHandle[CUBE3] = LoadGraph("Data/Map/Block5.png");
-	g_CubeHandle[CUBE4] = LoadGraph("Data/Map/Block6.png");
-	g_CubeHandle[CUBE5] = LoadGraph("Data/Map/Block7.png");
-	g_CubeHandle[CUBE6] = LoadGraph("Data/Map/Block8.png");
-	g_CubeHandle[CUBE7] = LoadGraph("Data/Map/Block9.png");
+	g_CubeHandle[CUBE1] = LoadGraph("Data/Cube/Cube1.png");
+	g_CubeHandle[CUBE2] = LoadGraph("Data/Cube/Cube2.png");
+	g_CubeHandle[CUBE3] = LoadGraph("Data/Cube/Cube3.png");
+	g_CubeHandle[CUBE4] = LoadGraph("Data/Cube/Cube4.png");
+	g_CubeHandle[CUBE5] = LoadGraph("Data/Cube/Cube5.png");
+	g_CubeHandle[CUBE6] = LoadGraph("Data/Cube/Cube6.png");
+	g_CubeHandle[CUBE7] = LoadGraph("Data/Cube/Cube7.png");
 }
 
 
@@ -50,13 +51,15 @@ void UpdateCube()
 
 void DrawCube()
 {
-	for (int i = 0; i < CUBE_NUM; i++)
-	{
-		DrawGraph((int)g_CubeData.body.pos.x, (int)g_CubeData.body.pos.y, g_CubeData.handle, TRUE);
+	// スクロールのためカメラを取得
+	CameraData camera = GetCamera();
 
-		if (g_CubeData.hitFlag)
+	CubeData* cube = g_Cubes;
+	for (int i = 0; i < CUBE_MAX; i++, cube++)
+	{
+		if (cube->active)
 		{
-			DrawString(0, 20, "プレイヤーが当たった", GetColor(255, 255, 255));
+			DrawGraph((int)(cube->pos.x - camera.pos.x), (int)(cube->pos.y - camera.pos.y), cube->handle, TRUE);
 		}
 	}
 }
@@ -69,9 +72,34 @@ void FinCube()
 	}
 }
 
+
+CubeData* CreateCube(CubeMapType type, VECTOR pos)
+{
+	// 未使用のブロックを探す
+	CubeData* cube = g_Cubes;
+	for (int i = 0; i < CUBE_MAX; i++, cube++)
+	{
+		if (!cube->active)
+		{
+			// ブロック生成
+			cube->active = true;
+			cube->handle = g_CubeHandle[type];
+			cube->pos = pos;
+			cube->type = type;
+
+			cube->width = MAP_CHIP_WIDTH;
+			cube->height = MAP_CHIP_HEIGHT;
+			return cube;
+		}
+	}
+
+	return nullptr;
+}
+
+
 CubeData* GetCube()
 {
-	return nullptr;
+	return g_Cubes;
 }
 
 void CubeHitPlayer(int index)
