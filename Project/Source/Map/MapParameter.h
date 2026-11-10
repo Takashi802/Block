@@ -29,7 +29,6 @@ enum CubeMapType
 	CUBE_TYPE_MAX,
 };
 
-
 struct BlockData
 {
 	bool active;
