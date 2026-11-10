@@ -19,7 +19,7 @@ void LoadMap()
 {
 	LoadMapChipData();
 	LoadBlock();
-	LoadCube();
+
 
 }
 
@@ -32,7 +32,7 @@ void DrawMap()
 {
 	// ƒuƒƒbƒN•`‰æ
 	DrawBlock();
-	DrawCube();
+
 }
 
 void FinMap()

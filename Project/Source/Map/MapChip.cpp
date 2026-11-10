@@ -1,8 +1,8 @@
 #include "MapChip.h"
 #include "DxLib.h"
 #include "MapParameter.h"
-#include "Block.h"
 #include "../GameSetting/GameSetting.h"
+#include "Block.h"
 
 MapChipData g_MapChip[MAP_CHIP_Y_NUM][MAP_CHIP_X_NUM] = { 0 };
 
@@ -44,33 +44,8 @@ void CreateMap()
 	}
 }
 
-void LoadCubeData()
-{
-
-	FILE* fp;
-	if (fopen_s(&fp, "Data/Map/Map.bin", "rb") != 0) return;
-
-	for (int i = 0; i < MAP_CHIP_Y_NUM; i++)
-	{
-		for (int j = 0; j < MAP_CHIP_X_NUM; j++)
-		{
-			//マップ情報は1バイトずつ保存されるので、
-			//fgetc関数でちょうど1バイト取得できる
-			int map = fgetc(fp);
-			g_MapChip[i][j].mapChip = map;
-		}
-	}
 
 
-}
-
-
-
-//void CubeMap()
-//{
-//	for(int )
-//
-//}
 
 
 

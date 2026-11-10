@@ -23,6 +23,8 @@
     <ClCompile Include="Source\Camera\Camera.cpp" />
     <ClCompile Include="Source\Collision\Collision.cpp" />
     <ClCompile Include="Source\Cube\Cube.cpp" />
+    <ClCompile Include="Source\Cube\CubeChip.cpp" />
+    <ClCompile Include="Source\Cube\CubeManager.cpp" />
     <ClCompile Include="Source\Effect\Effect.cpp" />
     <ClCompile Include="Source\Enemy\Enemy.cpp" />
     <ClCompile Include="Source\Input\Input.cpp" />
@@ -44,6 +46,9 @@
     <ClInclude Include="Source\Collision\Collision.h" />
     <ClInclude Include="Source\Collision\CollisionParameter.h" />
     <ClInclude Include="Source\Cube\Cube.h" />
+    <ClInclude Include="Source\Cube\CubeChip.h" />
+    <ClInclude Include="Source\Cube\CubeManager.h" />
+    <ClInclude Include="Source\Cube\CubeParameter.h" />
     <ClInclude Include="Source\Effect\Effect.h" />
     <ClInclude Include="Source\Enemy\Enemy.h" />
     <ClInclude Include="Source\GameSetting\GameSetting.h" />

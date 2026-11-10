@@ -16,18 +16,6 @@ enum MapChipType
 	BLOCK_TYPE_MAX,
 };
 
-enum CubeMapType
-{
-	CUBE_MAP_NONE,
-	CUBE1,
-	CUBE2,
-	CUBE3,
-	CUBE4,
-	CUBE5,
-	CUBE6,
-	CUBE7,
-	CUBE_TYPE_MAX,
-};
 
 struct BlockData
 {

@@ -1,10 +1,7 @@
 #include "DxLib.h"
-#include "Cube.h"
 #include "../Map/MapParameter.h"
-
-#define CUBE_WIDTH (25.0f)
-#define CUBE_HEIGHT (25.0f)
-#define CUBE_RADIUS	(20.0f)
+#include "CubeParameter.h"
+#include "Cube.h"
 
 // ïœêî
 
@@ -70,6 +67,11 @@ void FinCube()
 }
 
 CubeData* GetCube()
+{
+	return nullptr;
+}
+
+CubeData* CreateCubes(CubeChipType type, VECTOR pos)
 {
 	return nullptr;
 }

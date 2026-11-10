@@ -11,6 +11,7 @@
 #include "Camera/Camera.h"
 #include "Enemy/Enemy.h"
 #include "Cube/Cube.h"
+#include "Cube/CubeManager.h"
 
 
 
@@ -69,13 +70,13 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
 	InitEnemy();
 
-	InitCube();
+	InitCubes();
 
 	LoadPlayer();
 
 	LoadEnemy();
 
-	LoadCube();
+	LoadCubes();
 
 	StartPlayer();
 
@@ -109,7 +110,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
 		UpdateEnemy();
 
-		UpdateCube();
+	
 
 		DrawMap();
 
@@ -118,7 +119,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
 		DrawEnemy();
 
-		DrawCube();
+		DrawCubes();
 
 		// エスケープキーで終了
 		if (CheckHitKey(KEY_INPUT_ESCAPE)) break;

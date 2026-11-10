@@ -108,6 +108,12 @@
     <ClCompile Include="Source\Cube\Cube.cpp">
       <Filter>Source\Cube</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Cube\CubeChip.cpp">
+      <Filter>Source\Cube</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Cube\CubeManager.cpp">
+      <Filter>Source\Cube</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Player\Player.h">
@@ -168,6 +174,15 @@
       <Filter>Source\Collision</Filter>
     </ClInclude>
     <ClInclude Include="Source\Cube\Cube.h">
+      <Filter>Source\Cube</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Cube\CubeChip.h">
+      <Filter>Source\Cube</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Cube\CubeParameter.h">
+      <Filter>Source\Cube</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Cube\CubeManager.h">
       <Filter>Source\Cube</Filter>
     </ClInclude>
   </ItemGroup>
