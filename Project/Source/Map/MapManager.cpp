@@ -5,6 +5,7 @@
 #include "../Player/Player.h"
 #include "../Collision/Collision.h"
 #include "../Cube/Cube.h"
+#include "../Cube/CubeChip.h"
 
 
 // キャラクターの周囲何マスまでチェックするか
@@ -20,7 +21,8 @@ void LoadMap()
 	LoadMapChipData();
 	LoadBlock();
 
-
+	LoadCubeChipData();
+	LoadCube();
 }
 
 void StartMap()
@@ -32,7 +34,7 @@ void DrawMap()
 {
 	// ブロック描画
 	DrawBlock();
-
+	DrawCube();
 }
 
 void FinMap()
@@ -68,14 +70,16 @@ void MoveWithMapCollision(Body* body)
 				if (body->move.x > 0.0f)
 				{
 					// 左に押し出す
-					body->pos.x -= (body->pos.x + body->width) - (block->pos.x);
+					//body->pos.x -= (body->pos.x + body->width) - (block->pos.x);
+					body->pos.x = block->pos.x - body->width;
 
 				}
 				// 右からあたったか
 				else if (body->move.x < 0.0f)
 				{
 					// 右に押し出す
-					body->pos.x += (block->pos.x + body->width) - (body->pos.x);
+					//body->pos.x += (block->pos.x + body->width) - (body->pos.x);
+					body->pos.x = block->pos.x + block->width;
 
 				}
 
@@ -109,8 +113,8 @@ void MoveWithMapCollision(Body* body)
 				if (body->move.y > 0.0f)
 				{
 					// 上に押し出す
-					body->pos.y -= (body->pos.y + body->height) - (block->pos.y);
-
+					//body->pos.y -= (body->pos.y + body->height) - (block->pos.y);
+					body->pos.y = block->pos.y - body->height;
 					// 空中フラグを折る
 					body->isAir = false;
 				}
@@ -118,8 +122,8 @@ void MoveWithMapCollision(Body* body)
 				else if (body->move.y < 0.0f)
 				{
 					// 下に押し出す
-					body->pos.y += (block->pos.y + body->width) - (body->pos.y);
-
+					//body->pos.y += (block->pos.y + body->width) - (body->pos.y);
+					body->pos.y = block->pos.y + block->height;
 				}
 
 				// 移動量は0にする

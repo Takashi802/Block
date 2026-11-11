@@ -34,10 +34,10 @@ void CreateCube()
 		for (int j = 0; j < CUBE_CHIP_X_NUM; j++)
 		{
 			//マップチップに合わせてブロック生成
-			CubeChipType type = (CubeChipType)g_CubeChip[i][j].cubeChip;
+			MapChipType type = (MapChipType)g_CubeChip[i][j].cubeChip;
 
 			//MAP_CHIP_NONEの場合は何もしない
-			if (type == CUBE_CHIP_NONE)continue;
+			if (type == MAP_CHIP_NONE)continue;
 
 			//インデックスから座標を計算
 			VECTOR pos = VGet(j * CUBE_CHIP_WIDTH, i * CUBE_CHIP_HEIGHT, 0.0f);

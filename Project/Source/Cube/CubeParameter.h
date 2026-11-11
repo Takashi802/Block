@@ -1,10 +1,11 @@
 #pragma once
 #include "DxLib.h"
 #include "../Collision/CollisionParameter.h"
-
+#include "../Map/MapParameter.h"
 
 
 #define CUBE_NUM		(3)
+#define CUBE_MAX	1024
 #define CUBE_RADIUS	(128.0f)
 #define CUBE_WIDTH	(256.0f)
 #define CUBE_HEIGHT	(256.0f)
@@ -14,20 +15,6 @@
 #define CUBE_CHIP_WIDTH (24.0f)
 #define CUBE_CHIP_HEIGHT (24.0f)
 
-
-
-enum CubeChipType
-{
-	CUBE_CHIP_NONE,
-	CUBE1,
-	CUBE2,
-	CUBE3,
-	CUBE4,
-	CUBE5,
-	CUBE6,
-	CUBE7,
-	CUBE_TYPE_MAX,
-};
 
 
 
@@ -41,7 +28,7 @@ struct CubeData
 	VECTOR move;
 	float width;
 	float height;
-	CubeChipType type;
+	MapChipType type;
 };
 
 

@@ -6,8 +6,8 @@
 #include "../Map/MapManager.h"
 
 //プレイヤー設定関連// プレイヤー設定関連
-#define PLAYER_WIDTH (25.0f)
-#define PLAYER_HEIGHT (40.0f)
+#define PLAYER_WIDTH (50.0f)
+#define PLAYER_HEIGHT (50.0f)
 #define PLAYER_RADIUS	(20.0f)
 #define PLAYER_DEFAULT_POS_X (100.0f)
 #define PLAYER_DEFAULT_POS_Y (300.0f)
@@ -24,7 +24,7 @@
 
 
 //ジャンプ力
-#define PLAYER_JUMP_POWER (1.0f)
+#define PLAYER_JUMP_POWER (5.0f)
 //重力
 #define PLAYER_GRAVITY (0.1f)
 
@@ -110,8 +110,8 @@ void UpdatePlayer()
 	//}
 
 	// 移動処理
-	g_PlayerData.body.pos.x += g_PlayerData.body.move.x;
-	g_PlayerData.body.pos.y += g_PlayerData.body.move.y;
+	//g_PlayerData.body.pos.x += g_PlayerData.body.move.x;
+	//g_PlayerData.body.pos.y += g_PlayerData.body.move.y;
 
 	// 当たり判定付きで移動
 	MoveWithMapCollision(&g_PlayerData.body);

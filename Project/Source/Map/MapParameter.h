@@ -10,9 +10,15 @@
 enum MapChipType
 {
 	MAP_CHIP_NONE,		
-	BLOCK1,				//この数字とエクセルの数字が同じ
+	BLOCK1 ,				//この数字とエクセルの数字が同じ
 	BLOCK2,
-	
+	CUBE1,
+	CUBE2,
+	CUBE3,
+	CUBE4,
+	CUBE5,
+	CUBE6,
+	CUBE7,
 	BLOCK_TYPE_MAX,
 };
 

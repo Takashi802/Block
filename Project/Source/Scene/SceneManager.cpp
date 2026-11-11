@@ -74,7 +74,7 @@ void InitScene()
 	switch (g_NowScene)
 	{
 	case SCENE_TITLE:	// タイトル
-		InitScene();
+		// InitTitleScene();
 		break;
 
 	case SCENE_PLAY:	// プレイ
@@ -97,7 +97,7 @@ void LoadScene()
 	switch (g_NowScene)
 	{
 	case SCENE_TITLE:	// タイトル
-		LoadScene();
+		// LoadTitleScene();
 		break;
 
 	case SCENE_PLAY:	// プレイ
@@ -120,7 +120,7 @@ void StartScene()
 	switch (g_NowScene)
 	{
 	case SCENE_TITLE:	// タイトル
-		StartScene();
+		// StartTitleScene();
 		break;
 
 	case SCENE_PLAY:	// プレイ
@@ -143,7 +143,7 @@ void StepScene()
 	switch (g_NowScene)
 	{
 	case SCENE_TITLE:	// タイトル
-		StepScene();
+		// StepTitleScene();
 		break;
 
 	case SCENE_PLAY:	// プレイ
@@ -166,7 +166,7 @@ void UpdateScene()
 	switch (g_NowScene)
 	{
 	case SCENE_TITLE:	// タイトル
-		UpdateScene();
+		// UpdateTitleScene();
 		break;
 
 	case SCENE_PLAY:	// プレイ
@@ -189,7 +189,7 @@ void DrawScene()
 	switch (g_NowScene)
 	{
 	case SCENE_TITLE:	// タイトル
-		DrawScene();
+		// DrawTitleScene();
 		break;
 
 	case SCENE_PLAY:	// プレイ
@@ -212,7 +212,7 @@ void FinScene()
 	switch (g_NowScene)
 	{
 	case SCENE_TITLE:	// タイトル
-		FinScene();
+		// FinTitleScene();
 		break;
 
 	case SCENE_PLAY:	// プレイ

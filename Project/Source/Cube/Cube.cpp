@@ -2,21 +2,22 @@
 #include "../Map/MapParameter.h"
 #include "CubeParameter.h"
 #include "Cube.h"
+#include "../Camera/Camera.h"
 
 // 変数
 
-CubeData g_CubeData = { 0 };
-int g_CubeHandle[CUBE_TYPE_MAX] = { 0 };
+CubeData g_Cubes[CUBE_MAX] = { 0 };
+int g_CubeHandle[BLOCK_TYPE_MAX] = { 0 };
 
 
 void InitCube()
 {
-
-	for (int i = 0; i < CUBE_NUM; i++)
+	CubeData* cube = g_Cubes;
+	for (int i = 0; i < CUBE_MAX; i++, cube++)
 	{
-		
-
-	
+		cube->active = false;
+		cube->pos = VGet(0.0f, 0.0f, 0.0f);
+		cube->type = MAP_CHIP_NONE;
 	}
 }
 
@@ -34,11 +35,6 @@ void LoadCube()
 
 void StepCube()
 {
-	for (int i = 0; i < CUBE_NUM; i++)
-	{
-		// ヒットフラグをリセット
-		g_CubeData.hitFlag = false;
-	}
 }
 
 void UpdateCube()
@@ -47,36 +43,51 @@ void UpdateCube()
 
 void DrawCube()
 {
-	for (int i = 0; i < CUBE_NUM; i++)
-	{
-		DrawGraph((int)g_CubeData.body.pos.x, (int)g_CubeData.body.pos.y, g_CubeData.handle, TRUE);
 
-		if (g_CubeData.hitFlag)
+	CameraData camera = GetCamera();
+
+	CubeData* cube = g_Cubes;
+	for (int i = 0; i < BLOCK_MAX; i++, cube++)
+	{
+		if (cube->active)
 		{
-			DrawString(0, 20, "プレイヤーが当たった", GetColor(255, 255, 255));
+			DrawGraph((int)(cube->pos.x - camera.pos.x), (int)(cube->pos.y - camera.pos.y), cube->handle, TRUE);
 		}
 	}
 }
 
 void FinCube()
 {
-	for (int i = 0; i < CUBE_NUM; i++)
-	{
-		DeleteGraph(g_CubeData.handle);
-	}
+	
 }
+
+
 
 CubeData* GetCube()
 {
-	return nullptr;
+	return g_Cubes;
 }
 
-CubeData* CreateCubes(CubeChipType type, VECTOR pos)
-{
-	return nullptr;
-}
 
-void CubeHitPlayer(int index)
+CubeData* CreateCubes(MapChipType type, VECTOR pos)
 {
-	g_CubeData.hitFlag = true;
+	// 未使用のブロックを探す
+	CubeData* cube = g_Cubes;
+	for (int i = 0; i < CUBE_MAX; i++, cube++)
+	{
+		if (!cube->active)
+		{
+			// ブロック生成
+			cube->active = true;
+			cube->handle = g_CubeHandle[type];
+			cube->pos = pos;
+			cube->type = type;
+
+			cube->width = CUBE_CHIP_WIDTH;
+			cube->height = CUBE_CHIP_HEIGHT;
+			return cube;
+		}
+	}
+
+	return nullptr;
 }

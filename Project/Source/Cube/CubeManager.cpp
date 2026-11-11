@@ -9,14 +9,14 @@
 // キャラクターの周囲何マスまでチェックするか
 #define CHECK_ROUND_NUM (2)
 
+// Map側に統合
 void InitCubes()
 {
-
 }
 
+// Map側に統合
 void LoadCubes()
 {
-	DrawCube();
 }
 
 void StartCubes()

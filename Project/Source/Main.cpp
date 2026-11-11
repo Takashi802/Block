@@ -20,7 +20,7 @@
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd)
 {
 	// ウィンドウモードON
-	//ChangeWindowMode(TRUE);
+	ChangeWindowMode(TRUE);
 
 	// 画面解像度の設定
 	//SetGraphMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_COLOR_DEPTH);
@@ -29,14 +29,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 	{
 		return -1;			// エラーが起きたら直ちに終了
 	}
-
-
-
-	InitMap();
-
-	LoadMap();
-
-	StartMap();
 
 	
 
@@ -66,11 +58,17 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 	// FPS制御を初期化
 	//InitFPS();
 
+
+#if false
 	InitPlayer();
+
+	InitMap();
 
 	InitEnemy();
 
 	InitCubes();
+
+	LoadMap();
 
 	LoadPlayer();
 
@@ -78,7 +76,15 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
 	LoadCubes();
 
+	
+	StartMap();
+
 	StartPlayer();
+#endif
+
+
+	// 今後変えること
+	ChangeScene(SCENE_PLAY);
 
 	// ゲームのメインループ
 	while (ProcessMessage() >= 0)
@@ -93,13 +99,16 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 		UpdateInput();
 
 		// シーン管理の更新
-		//SceneManagerUpdate();
+		SceneManagerUpdate();
 
+#if false
 		StepCamera();
+#endif
 
 		// 入力システムの描画
 		DrawInput();
 
+#if false
 		StepPlayer();
 
 		StepEnemy();
@@ -120,6 +129,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 		DrawEnemy();
 
 		DrawCubes();
+#endif
 
 		// エスケープキーで終了
 		if (CheckHitKey(KEY_INPUT_ESCAPE)) break;

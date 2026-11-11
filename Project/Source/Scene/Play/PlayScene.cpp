@@ -4,6 +4,7 @@
 #include "../../Player/Player.h"
 #include "../../Camera/Camera.h"
 #include "../../Collision/Collision.h"
+#include "../../Cube/CubeManager.h"
 
 
 // 背景のスピード
@@ -20,7 +21,9 @@ void InitPlayScene()
 	// カメラ初期化
 	InitCamera();
 
+	//InitEnemy();
 
+	//InitCubes();
 }
 
 void LoadPlayScene()
@@ -30,6 +33,10 @@ void LoadPlayScene()
 
 	// マップをロード
 	LoadMap();
+
+	//LoadEnemy();
+
+	//LoadCubes();
 }
 
 void StartPlayScene()
@@ -39,6 +46,8 @@ void StartPlayScene()
 
 	// マップを開始
 	StartMap();
+
+	StartCubes();
 }
 
 void StepPlayScene()
@@ -48,6 +57,10 @@ void StepPlayScene()
 
 	// カメラステップ
 	StepCamera();
+
+	// StepEnemy();
+
+	// StepCube();
 }
 
 void UpdatePlayScene()
@@ -55,6 +68,8 @@ void UpdatePlayScene()
 	// マップ更新
 	// プレイヤー更新
 	UpdatePlayer();
+
+	// UpdateEnemy();
 
 	// 当たり判定
 	//CheckCollision();
@@ -68,16 +83,23 @@ void DrawPlayScene()
 	// マップ描画
 	DrawMap();
 
+	// DrawEnemy();
 
 	// カメラ描画
 	DrawCamera();
+
+	DrawCubes();
 }
 
 void FinPlayScene()
 {
+	// プレイヤー終了
+	FinPlayer();
+
 	// マップ終了
 	FinMap();
 
-	// プレイヤー終了
-	FinPlayer();
+	// FinEnemy();
+
+	FinCubes();
 }
