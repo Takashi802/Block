@@ -3,10 +3,15 @@
 #include "CubeParameter.h"
 #include "Cube.h"
 #include "../Camera/Camera.h"
+#include "../Player/Player.h"
 
+
+#define CUBE_MOVE_SPEED (1.0f)
 // •Ï”
 
-CubeData g_Cubes[CUBE_MAX] = { 0 };
+CubeData g_CubeData = { 0 };
+
+CubeData g_Cubes[CUBE_MAX] = { 0 }; 
 int g_CubeHandle[BLOCK_TYPE_MAX] = { 0 };
 
 
@@ -18,6 +23,9 @@ void InitCube()
 		cube->active = false;
 		cube->pos = VGet(0.0f, 0.0f, 0.0f);
 		cube->type = MAP_CHIP_NONE;
+		g_CubeData.body.move.x = 0.0f;
+		g_CubeData.body.move.y = 0.0f;
+
 	}
 }
 
@@ -35,6 +43,11 @@ void LoadCube()
 
 void StepCube()
 {
+	if (PLAYER_BOX_COLLISION_WIDTH ==CUBE_WIDTH)
+	{
+		g_CubeData.body.move.x = CUBE_MOVE_SPEED * PLAYER_MOVE_SPEED;
+	}
+
 }
 
 void UpdateCube()
