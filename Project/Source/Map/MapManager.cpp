@@ -6,6 +6,8 @@
 #include "../Collision/Collision.h"
 #include "../Cube/Cube.h"
 #include "../Cube/CubeChip.h"
+#include "../Enemy/Enemy.h"
+#include "../Enemy/EnemyChip.h"
 
 
 // キャラクターの周囲何マスまでチェックするか
@@ -23,6 +25,9 @@ void LoadMap()
 
 	LoadCubeChipData();
 	LoadCube();
+
+	LoadEnemyChipData();
+	LoadEnemy();
 }
 
 void StartMap()
@@ -35,6 +40,7 @@ void DrawMap()
 	// ブロック描画
 	DrawBlock();
 	DrawCube();
+	DrawEnemy();
 }
 
 void FinMap()

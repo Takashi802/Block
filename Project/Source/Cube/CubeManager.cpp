@@ -4,6 +4,7 @@
 #include "../Cube/Cube.h"
 #include "CubeChip.h"
 #include "CubeParameter.h"
+#include "CubeManager.h"
 
 
 // キャラクターの周囲何マスまでチェックするか
@@ -23,6 +24,12 @@ void StartCubes()
 {
 	CreateCube();
 }
+
+void StepCubes()
+{
+	StepCube();
+}
+
 
 void DrawCubes()
 {

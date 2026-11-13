@@ -114,6 +114,12 @@
     <ClCompile Include="Source\Cube\CubeManager.cpp">
       <Filter>Source\Cube</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Enemy\EnemyChip.cpp">
+      <Filter>Source\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Enemy\EnemyManager.cpp">
+      <Filter>Source\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Player\Player.h">
@@ -184,6 +190,15 @@
     </ClInclude>
     <ClInclude Include="Source\Cube\CubeManager.h">
       <Filter>Source\Cube</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Enemy\EnemyChip.h">
+      <Filter>Source\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Enemy\EnemyManager.h">
+      <Filter>Source\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Enemy\Enemyparameter.h">
+      <Filter>Source\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

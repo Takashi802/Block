@@ -43,7 +43,8 @@ void LoadCube()
 
 void StepCube()
 {
-	if (PLAYER_BOX_COLLISION_WIDTH ==CUBE_WIDTH)
+	
+	if(PLAYER_WIDTH==CUBE_WIDTH)
 	{
 		g_CubeData.body.move.x = CUBE_MOVE_SPEED * PLAYER_MOVE_SPEED;
 	}

@@ -27,6 +27,8 @@
     <ClCompile Include="Source\Cube\CubeManager.cpp" />
     <ClCompile Include="Source\Effect\Effect.cpp" />
     <ClCompile Include="Source\Enemy\Enemy.cpp" />
+    <ClCompile Include="Source\Enemy\EnemyChip.cpp" />
+    <ClCompile Include="Source\Enemy\EnemyManager.cpp" />
     <ClCompile Include="Source\Input\Input.cpp" />
     <ClCompile Include="Source\Item\Item.cpp" />
     <ClCompile Include="Source\Main.cpp" />
@@ -51,6 +53,9 @@
     <ClInclude Include="Source\Cube\CubeParameter.h" />
     <ClInclude Include="Source\Effect\Effect.h" />
     <ClInclude Include="Source\Enemy\Enemy.h" />
+    <ClInclude Include="Source\Enemy\EnemyChip.h" />
+    <ClInclude Include="Source\Enemy\EnemyManager.h" />
+    <ClInclude Include="Source\Enemy\Enemyparameter.h" />
     <ClInclude Include="Source\GameSetting\GameSetting.h" />
     <ClInclude Include="Source\Input\Input.h" />
     <ClInclude Include="Source\Item\item.h" />

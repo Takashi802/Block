@@ -10,7 +10,7 @@
 #define PLAYER_RADIUS	(20.0f)
 #define PLAYER_DEFAULT_POS_X (100.0f)
 #define PLAYER_DEFAULT_POS_Y (300.0f)
-#define PLAYER_MOVE_SPEED (1.0f)
+#define PLAYER_MOVE_SPEED (8.0f)
 
 
 // ãÈå`îªíËÇÃà íuï‚ê≥

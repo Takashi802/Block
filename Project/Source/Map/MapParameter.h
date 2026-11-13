@@ -19,6 +19,7 @@ enum MapChipType
 	CUBE5,
 	CUBE6,
 	CUBE7,
+	ENEMY1,
 	BLOCK_TYPE_MAX,
 };
 

@@ -64,7 +64,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
 	InitMap();
 
-	InitEnemy();
+	InitEnemies();
 
 	InitCubes();
 
@@ -72,7 +72,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
 	LoadPlayer();
 
-	LoadEnemy();
+	LoadEnemies();
 
 	LoadCubes();
 
@@ -111,13 +111,13 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 #if false
 		StepPlayer();
 
-		StepEnemy();
+		StepEnemies();
 
 		StepCube();
 
 		UpdatePlayer();
 
-		UpdateEnemy();
+		UpdateEnemies();
 
 	
 
@@ -126,7 +126,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 		
 		DrawPlayer();
 
-		DrawEnemy();
+		DrawEnemies();
 
 		DrawCubes();
 #endif
